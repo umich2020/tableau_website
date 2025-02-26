@@ -1,0 +1,180 @@
+/* Reset and base styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    line-height: 1.6;
+    color: #2d2a32;
+    background-color: #fcfaf9;
+}
+
+/* Navigation */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.5rem 5%;
+    background-color: #fcfaf9;
+    box-shadow: 0 2px 5px rgba(19, 22, 24, 0.1);
+}
+
+.logo {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #131618;
+}
+
+.nav-links a {
+    margin-left: 2rem;
+    text-decoration: none;
+    color: #2d2a32;
+    transition: color 0.3s;
+}
+
+.nav-links a:hover {
+    color: #3581b8;
+}
+
+/* Hero Section */
+.hero {
+    text-align: center;
+    padding: 5rem 5% 3rem;
+    background-color: #fcfaf9;
+}
+
+.hero h1 {
+    font-size: 2.5rem;
+    margin-bottom: 1.5rem;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+    color: #131618;
+}
+
+.hero .subheading {
+    font-size: 1.2rem;
+    color: #2d2a32;
+    margin-bottom: 2rem;
+}
+
+.cta-button {
+    padding: 1rem 2rem;
+    font-size: 1.1rem;
+    background-color: #3581b8;
+    color: #fcfaf9;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s;
+}
+
+.cta-button:hover {
+    background-color: #2d6a9a;
+    transform: translateY(-2px);
+}
+
+.demo-video {
+    margin-top: 3rem;
+}
+
+/* Feature Blocks */
+.features {
+    padding: 4rem 5%;
+}
+
+.feature-block {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 4rem;
+    gap: 2rem;
+    padding: 2rem;
+    border-radius: 8px;
+    transition: transform 0.3s;
+}
+
+.feature-block:hover {
+    transform: translateY(-5px);
+}
+
+.feature-content {
+    flex: 1;
+}
+
+.feature-content h2 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    color: #131618;
+}
+
+.feature-content p {
+    color: #2d2a32;
+    font-size: 1.1rem;
+}
+
+.feature-image {
+    flex: 1;
+}
+
+/* Placeholder styles */
+.video-placeholder {
+    background-color: #2d2a32;
+    padding: 10rem 5rem;
+    border-radius: 8px;
+    text-align: center;
+    color: #fcfaf9;
+    box-shadow: 0 4px 6px rgba(19, 22, 24, 0.1);
+}
+
+/* Final CTA Section */
+.final-cta {
+    text-align: center;
+    padding: 4rem 5%;
+    background-color: #131618;
+    color: #fcfaf9;
+}
+
+.final-cta h2 {
+    font-size: 2rem;
+    margin-bottom: 2rem;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .feature-block {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .hero h1 {
+        font-size: 2rem;
+    }
+
+    .feature-content, .feature-image {
+        width: 100%;
+    }
+
+    .nav-links a {
+        margin-left: 1rem;
+    }
+}
+
+/* Additional Animations */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.hero, .feature-block {
+    animation: fadeIn 0.8s ease-out forwards;
+} 

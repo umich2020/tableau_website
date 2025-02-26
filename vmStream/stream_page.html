@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Dashboard</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body class="light-mode">
+    <div class="main-container">
+        <!-- Streaming Section (VM Placeholder) -->
+        <div class="stream-container">
+            <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=1&mute=1" allowfullscreen></iframe>
+            <button class="export-btn">Export</button>
+        </div>
+        
+
+
+        <!-- Prompt Sidebar -->
+        <div class="prompt-sidebar">
+            <h2>Previous Prompts</h2>
+            <div id="promptHistory"></div>
+            <input type="text" id="promptInput" placeholder="Ask a follow-up prompt...">
+            <button onclick="sendPrompt()">Submit</button>
+            <div class="button-container">
+                <button id="themeToggle">🌙 Dark Mode</button>
+            </div>
+            
+        </div>
+    </div>
+
+
+
+    <script>
+        function sendPrompt() {
+            let input = document.getElementById("promptInput").value;
+            if (input.trim() !== "") {
+                let historyDiv = document.getElementById("promptHistory");
+                let newEntry = document.createElement("p");
+                newEntry.textContent = input;
+                historyDiv.appendChild(newEntry);
+                document.getElementById("promptInput").value = "";
+            }
+        }
+
+        // Theme Toggle
+        document.getElementById("themeToggle").addEventListener("click", function () {
+            let body = document.body;
+            if (body.classList.contains("light-mode")) {
+                body.classList.remove("light-mode");
+                body.classList.add("dark-mode");
+                this.textContent = "☀️ Light Mode";
+            } else {
+                body.classList.remove("dark-mode");
+                body.classList.add("light-mode");
+                this.textContent = "🌙 Dark Mode";
+            }
+        });
+    </script>
+</body>
+</html>

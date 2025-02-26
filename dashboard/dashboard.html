@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="nav-bar">
+        <div class="logo">
+            <i class="fas fa-chart-line"></i>
+            <p>Jian</p>
+        </div>
+        <div class="user-info">
+            <span>User1</span>
+            <div class="user-avatar">
+                <i class="fas fa-user"></i>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Dashboard Content -->
+    <div class="dashboard-container">
+        <!-- Examples Section -->
+        <div class="examples-section">
+            <h2>Examples</h2>
+            <button class="example-button" onclick="setPrompt('Make a scatter graph of the revenues of product category and sub-category.')">
+                Make a scatter graph of the revenues of product category and sub-category.
+            </button>
+            <button class="example-button" onclick="setPrompt('Create a table for each product for each profit margin (profit/sales).')">
+                Create a table for each product for each profit margin (profit/sales).
+            </button>
+        </div>
+
+        <!-- Upload Section -->
+        <div class="upload-section">
+            <h2>Upload CSV/Excel</h2>
+            <div class="upload-button" onclick="document.getElementById('fileInput').click()">
+                <i class="fas fa-cloud-upload-alt upload-icon"></i>
+                <p>Click to upload your dataset</p>
+                <input type="file" id="fileInput" accept=".csv,.xlsx,.xls" style="display: none;">
+            </div>
+        </div>
+
+        <!-- Prompt Section -->
+        <div class="prompt-section">
+            <div class="prompt-container">
+                <input type="text" class="prompt-input" placeholder="What can I do for you?" id="promptInput">
+                <button class="submit-button" id="submit_button">
+                    <i class="fas fa-arrow-right"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function setPrompt(text) {
+            document.getElementById('promptInput').value = text;
+        }
+
+        // File upload handling
+        document.getElementById('fileInput').addEventListener('change', function(e) {
+            const file = e.target.files[0];
+            if (file) {
+                // Handle file upload here
+                console.log('File selected:', file.name);
+            }
+        });
+        document.getElementById('submit_button').addEventListener('click', () => {
+            window.location.href = '../vmStream/stream_page.html';
+        });
+    </script>
+</body>
+</html>
