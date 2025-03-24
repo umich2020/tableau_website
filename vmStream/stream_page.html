@@ -1,5 +1,53 @@
 <!DOCTYPE html>
 <html lang="en">
+
+<script>
+    // Function to call the clean endpoint
+function cleanServer() {
+    fetch('http://18.217.194.103:5000/clean', {
+        method: 'POST'
+    })
+    .then(response => response.json())
+    .then(data => console.log("Clean response:", data))
+    .catch(error => console.error("Error cleaning:", error));
+}
+
+// Function to upload a file
+function uploadFile(file) {
+    // Clean the server before uploading
+    cleanServer();
+
+    const formData = new FormData();
+    formData.append('file', file);
+
+    fetch('http://18.217.194.103:5000/receive-file', {
+        method: 'POST',
+        body: formData
+    })
+    .then(response => response.json())
+    .then(data => console.log("File upload response:", data))
+    .catch(error => console.error("Error uploading file:", error));
+}
+
+// Function to submit a task prompt dynamically
+function submitTask(taskPrompt) {
+    const payload = {
+        task_prompt: taskPrompt
+    };
+
+    fetch('http://18.217.194.103:5000/submit-task', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(payload)
+    })
+    .then(response => response.json())
+    .then(data => console.log("Task response:", data))
+    .catch(error => console.error("Error submitting task:", error));
+}
+</script>
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,7 +58,7 @@
     <div class="main-container">
         <!-- Streaming Section (VM Placeholder) -->
         <div class="stream-container">
-            <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=1&mute=1" allowfullscreen></iframe>
+            <iframe src="http://3.141.76.84:8080/guacamole/" allowfullscreen></iframe>
             <button class="export-btn">Export</button>
         </div>
         
@@ -37,9 +85,11 @@
             if (input.trim() !== "") {
                 let historyDiv = document.getElementById("promptHistory");
                 let newEntry = document.createElement("p");
+                    submitTask(input);
                 newEntry.textContent = input;
                 historyDiv.appendChild(newEntry);
                 document.getElementById("promptInput").value = "";
+                
             }
         }
 
